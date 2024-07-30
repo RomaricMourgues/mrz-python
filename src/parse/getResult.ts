@@ -48,7 +48,12 @@ function getCorrection(
         line.slice(0, range.start) + correctedText + line.slice(range.end);
     });
   } else {
-    autocorrectArray = new Array(fieldParsers.length).fill([]);
+    // autocorrectArray = new Array(fieldParsers.length).fill([]);
+    // Use ES5 compatible code
+    autocorrectArray = [];
+    for (let i = 0; i < fieldParsers.length; i++) {
+      autocorrectArray.push([]);
+    }
   }
   return { corrected, autocorrectArray };
 }
