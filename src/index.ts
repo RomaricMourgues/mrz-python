@@ -1,7 +1,15 @@
 import { formats } from './formats';
 import states from './generated/states';
 import parse from './parse/parse';
+export { formats, states, parse };
+export * from './types';
 
-(window as any).formats = formats;
-(window as any).states = states;
-(window as any).parse = parse;
+type WindowType = {
+  formats: typeof formats;
+  states: typeof states;
+  parse: typeof parse;
+};
+
+(window as unknown as WindowType).formats = formats;
+(window as unknown as WindowType).states = states;
+(window as unknown as WindowType).parse = parse;
